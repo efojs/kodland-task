@@ -56,6 +56,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -106,6 +107,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+# FILE STORAGE AWS S3
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = 'kodland-temp'
+AWS_S3_REGION_NAME = 'eu-west-2'
+if all([i in ['AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY'] for i in os.environ]):
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+
+MEDIA_URL = 'https://kodland-temp.s3.eu-west-2.amazonaws.com/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

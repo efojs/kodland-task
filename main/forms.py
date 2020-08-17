@@ -7,4 +7,4 @@ from unidecode import unidecode
 class BlogPostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ['title', 'text']
+        fields = ['title', 'text', 'image']

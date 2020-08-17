@@ -21,7 +21,7 @@ def blog_post(request, post_id):
 
 def new_blog_post(request):
     if request.method == 'POST':
-        form = BlogPostForm(data=request.POST)
+        form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
             blog_post = form.save()
             print('')

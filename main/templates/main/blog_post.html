@@ -1,7 +1,12 @@
 {% extends "main/base.html" %}
+{% load static %}
 {% block content %}
 <h1>{{ post.title }}</h1>
 <p>{{ post.text }}</p>
+{% if post.image %}
+  <img src="{% get_media_prefix %}{{ post.image }}" alt="">
+{% endif %}
+
 <a href="{% url 'new_blog_post' %}">Add new</a>
 <a href="{% url 'root' %}">Home</a>
 {% endblock %}
