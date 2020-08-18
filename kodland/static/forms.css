@@ -1,0 +1,64 @@
+.form-new-post .col {
+  padding: 0;
+}
+.form-new-post .col:last-child {
+  padding-left: 1rem;
+}
+.form-new-post input[type=text], .form-new-post textarea {
+   border: 2px solid #cdcdcd;
+   border-radius: 3px;
+   padding: 0.5rem 1rem;
+   width: 100%;
+   resize: vertical;
+   font-size: 1rem;
+   height: auto;
+   box-sizing: border-box;
+}
+.form-new-post input[type="text"]:not(.browser-default):focus:not([readonly]) {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 2px solid #cdcdcd;
+}
+
+.form-new-post button {
+  border-radius: 3px;
+}
+.form-new-post__submit {
+  background-color: #e9399c;
+  height: calc(2rem + 4px);
+  box-sizing: border-box;
+}
+.form-new-post__submit:hover, .form-new-post__submit:focus {
+  background-color: #e9399c;
+}
+.form-new-post__load-file {
+  margin: 0 auto;
+  display: block;
+}
+.preview__title {
+  color: var(--main-blue);
+  text-align: center;
+  font-size: 110%;
+  margin: 0 0 1rem;
+  line-height: 120%;
+}
+.preview__image-container {
+  position: relative;
+}
+.preview__image {
+  width: 100%;
+}
+.preview__remove {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  min-width: initial;
+  padding: 0;
+  line-height: 0;
+  height: 1.2rem;
+}
+.form-new-post .preview {
+  border: 2px #cdcdcd solid;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+}

@@ -1,23 +1,32 @@
 <input style="display: none;" id="image-file-input" type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>
 
 <div class="preview">
-  <button type="button" onclick="clickFileInput()">Загрузите изображение</button>
-  <img id="preview-image" src="" alt="" width=100>
-  <button type="button" onclick="cleanFileInputAndPreview()" class="preview__remove">×</button>
+  <p class="preview__title">Загрузить изображение</p>
+  <button id="image-file-input-action-button" class="btn waves-effect waves-light indigo accent-3 z-depth-0 form-new-post__load-file" type="button" onclick="clickFileInput(event)">Файл</button>
+  <div style="display: none;" id="preview-image-container" class="preview__image-container">
+    <img class="preview__image" id="preview-image" src="" alt="" width=100>
+    <button class="btn-small transparent grey-text text-lighten-2 z-depth-0 preview__remove" id="image-file-input-clean-button" type="button" onclick="cleanFileInputAndPreview()"><i class="material-icons">cancel</i></button>
+  </div>
 </div>
 
 <script type="text/javascript">
   const imageElement = document.querySelector('#preview-image')
   const fileInput = document.querySelector('#image-file-input')
-  function clickFileInput() {
+  const actionButton = document.querySelector('#image-file-input-action-button')
+  const previewContainer = document.querySelector('#preview-image-container')
+  function clickFileInput(e) {
     fileInput.click()
   }
   function handleChange(e) {
     imageElement.src = window.URL.createObjectURL(e.target.files[0])
+    previewContainer.style.display = 'block'
+    actionButton.style.display = 'none'
   }
   function cleanFileInputAndPreview() {
     fileInput.value = null
     imageElement.src = ''
+    previewContainer.style.display = 'none'
+    actionButton.style.display = 'block'
   }
   document.addEventListener('DOMContentLoaded', e => {
       fileInput.addEventListener('change', e => handleChange(e))

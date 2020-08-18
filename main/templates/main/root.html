@@ -1,13 +1,25 @@
 {% extends "main/base.html" %}
 {% block content %}
 {% if posts %}
-  {% for post in posts %}
-    <div class="">
-      {{ post }}
+  <div class="container">
+    <div class="section">
+      {% include 'main/parts/header-post-cell.html' with post=posts.0 %}
     </div>
-  {% endfor %}
+  </div>
+  <div class="divider"></div>
+  <div class="container">
+    <div class="section other-posts">
+      <h5>Другие статьи</h5>
+      <div class="grid">
+        {% for post in posts %}
+          {% if not forloop.first %}
+            {% include 'main/parts/post-cell.html' %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 {% else %}
   <p>No posts yet</p>
 {% endif %}
-<a href="{% url 'new_blog_post' %}">Add new</a>
 {% endblock %}

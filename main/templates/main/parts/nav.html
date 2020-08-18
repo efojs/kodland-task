@@ -1,0 +1,10 @@
+{% load static %}
+<div class="container custom-nav">
+  <div class="section">
+    <a id="logo-container" href="{% url 'root' %}" class="brand-logo indigo-text text-accent-3">
+      <img src="{% static 'logo.png' %}" alt="">
+      <span class="black-text">Блог</span>
+    </a>
+    <a href="{% url 'new_blog_post' %}" class="right indigo accent-3 waves-effect waves-light btn-small z-depth-0"><i class="material-icons left">add</i> Добавить статью</a>
+  </div>
+</div>
