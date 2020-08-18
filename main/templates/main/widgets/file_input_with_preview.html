@@ -1,0 +1,25 @@
+<input style="display: none;" id="image-file-input" type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>
+
+<div class="preview">
+  <button type="button" onclick="clickFileInput()">Загрузите изображение</button>
+  <img id="preview-image" src="" alt="" width=100>
+  <button type="button" onclick="cleanFileInputAndPreview()" class="preview__remove">×</button>
+</div>
+
+<script type="text/javascript">
+  const imageElement = document.querySelector('#preview-image')
+  const fileInput = document.querySelector('#image-file-input')
+  function clickFileInput() {
+    fileInput.click()
+  }
+  function handleChange(e) {
+    imageElement.src = window.URL.createObjectURL(e.target.files[0])
+  }
+  function cleanFileInputAndPreview() {
+    fileInput.value = null
+    imageElement.src = ''
+  }
+  document.addEventListener('DOMContentLoaded', e => {
+      fileInput.addEventListener('change', e => handleChange(e))
+  })
+</script>
